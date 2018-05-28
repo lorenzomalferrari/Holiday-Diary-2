@@ -1,1 +1,1 @@
-# Holiday-Diary-2
+# Holiday Diary 2
