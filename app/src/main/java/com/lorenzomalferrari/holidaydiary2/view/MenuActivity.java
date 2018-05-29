@@ -3,8 +3,6 @@ package com.lorenzomalferrari.holidaydiary2.view;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -17,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.github.clans.fab.FloatingActionMenu;
+import com.github.clans.fab.FloatingActionButton;
 import com.lorenzomalferrari.holidaydiary2.R;
 import com.lorenzomalferrari.holidaydiary2.control.Controller;
 import com.lorenzomalferrari.holidaydiary2.control.DatabaseHelper;
@@ -33,7 +33,7 @@ public class MenuActivity extends AppCompatActivity
     DatabaseHelper databaseHelper;
 
     //
-    //FloatingActionMenu floatingActionMenu;
+    FloatingActionMenu floatingActionMenu;
     FloatingActionButton travel,note,picture,place;
 
     @Override
@@ -59,17 +59,22 @@ public class MenuActivity extends AppCompatActivity
         checkUserSession();
         // Inizializzazione dei componenti
         init();
+        //Esecuzione dei bottoni
+        actionTravel();
+        actionNote();
+        actionPicture();
+        actionPlace();
     }
 
     /**
      * Inizializzazione degli attributi dei componenti
      */
     private void init() {
-        //floatingActionMenu = findViewById(R.id.floatingActionMenu);
-        //travel = findViewById(R.id.floatingActionButtonTravel);
-        //note = findViewById(R.id.floatingActionButtonNote);
-        //picture = findViewById(R.id.floatingActionButtonPicture);
-        //place = findViewById(R.id.floatingActionButtonPlace);
+        floatingActionMenu = findViewById(R.id.floatingActionMenu);
+        travel = findViewById(R.id.floatingActionButtonTravel);
+        note = findViewById(R.id.floatingActionButtonNote);
+        picture = findViewById(R.id.floatingActionButtonPicture);
+        place = findViewById(R.id.floatingActionButtonPlace);
     }
 
 
@@ -148,6 +153,8 @@ public class MenuActivity extends AppCompatActivity
             case R.id.nav_homepage:
                 break;
             case R.id.nav_travels:
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.content_frame,new TravelsFragment()).commit();
                 break;
             case R.id.nav_notes:
                 break;
@@ -175,4 +182,70 @@ public class MenuActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
+
+    /**
+     * Chiamo l'attività per visualizzare la lista dei viaggi
+     */
+    private void actionTravel(){
+        travel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                //ft.replace(R.id.content_frame, new AddTravelFragment()).commit();
+                // Pulisco la visualizzazione dei bottoni
+                closeFloatingActionMenu();
+            }
+        });
+    }
+
+    /**
+     * Chiamo l'attività per visualizzare la lista delle note
+     */
+    private void actionNote(){
+        note.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Pulisco la visualizzazione dei bottoni
+                closeFloatingActionMenu();
+            }
+        });
+    }
+
+    /**
+     * Chiamo l'attività per visualizzare la lista delle immagini
+     */
+    private void actionPicture(){
+        picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Pulisco la visualizzazione dei bottoni
+                closeFloatingActionMenu();
+            }
+        });
+    }
+
+    /**
+     * Chiamo l'attività per visualizzare la lista dei luoghi
+     */
+    private void actionPlace(){
+        place.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Pulisco la visualizzazione dei bottoni
+                closeFloatingActionMenu();
+            }
+        });
+    }
+
+    /**
+     * Chiudo il menu
+     */
+    private void closeFloatingActionMenu(){
+        floatingActionMenu.setAnimated(false);
+        floatingActionMenu.close(false);
+    }
+
 }
