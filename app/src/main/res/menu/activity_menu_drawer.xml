@@ -7,31 +7,47 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Home page" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Travels" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Notes" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Pictures" />
+        <item
+            android:id="@+id/nav_places"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Places" />
+        <item
+            android:id="@+id/nav_reservations"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Reservations" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Other">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Account" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_privacy"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Privacy" />
+            <item
+                android:id="@+id/nav_infoApp"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Info App" />
         </menu>
     </item>
 

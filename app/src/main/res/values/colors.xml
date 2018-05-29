@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!-- -->
+    <color name="primaryColor">#ef6c00</color>
+    <color name="primaryLightColor">#ff9d3f</color>
+    <color name="primaryDarkColor">#b53d00</color>
+    <color name="secondaryColor">#d84315</color>
+    <color name="secondaryLightColor">#ff7543</color>
+    <color name="secondaryDarkColor">#9f0000</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#000000</color>
+    <!-- -->
+    <color name="colorPrimaryVersion">#3f51b5</color>
+    <color name="colorPrimaryDarkVersion">#2f333f</color>
+    <color name="bluelight">#49acd5</color>
+    <color name="green">#45bc62</color>
+    <color name="white">#ffffff</color>
+    <color name="orange">#eaad43</color>
+
+    <color name="trasparent">@android:color/transparent</color>
+    <!--
+                            Lista dei colori da usare nell'app
+    -->
+
+    <!-- Splash Activity -->
+    <!-- Colore di sfondo e colore del titolo -->
+    <!-- Login Activity -->
+    <!-- Sfondo della pagina, stile del bottone, colore del testo del bottone, colore di testo Email e Password -->
+
+
 </resources>
