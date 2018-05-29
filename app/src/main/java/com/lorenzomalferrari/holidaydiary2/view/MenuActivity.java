@@ -1,5 +1,6 @@
 package com.lorenzomalferrari.holidaydiary2.view;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,35 +15,80 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.lorenzomalferrari.holidaydiary2.R;
+import com.lorenzomalferrari.holidaydiary2.control.Controller;
+import com.lorenzomalferrari.holidaydiary2.control.DatabaseHelper;
+import com.lorenzomalferrari.holidaydiary2.control.UserSessionManager;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    //
+    Controller controller;
+    //
+    Dialog myDialog;
+    UserSessionManager userSessionManager;
+    DatabaseHelper databaseHelper;
+
+    //
+    //FloatingActionMenu floatingActionMenu;
+    FloatingActionButton travel,note,picture,place;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        controller = new Controller();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Check UserSessionManager
+        checkUserSession();
+        // Inizializzazione dei componenti
+        init();
     }
+
+    /**
+     * Inizializzazione degli attributi dei componenti
+     */
+    private void init() {
+        //floatingActionMenu = findViewById(R.id.floatingActionMenu);
+        //travel = findViewById(R.id.floatingActionButtonTravel);
+        //note = findViewById(R.id.floatingActionButtonNote);
+        //picture = findViewById(R.id.floatingActionButtonPicture);
+        //place = findViewById(R.id.floatingActionButtonPlace);
+    }
+
+
+    /**
+     * Controllo i dati della sessione utente
+     */
+    private void checkUserSession(){
+        // Session class instance
+        userSessionManager = new UserSessionManager(getApplicationContext());
+
+        /*
+        Toast.makeText(
+                        getApplicationContext(),
+                        "User Login Status: " + userSessionManager.isUserLoggedIn(),
+                        Toast.LENGTH_LONG)
+                    .show();
+        */
+        // Check user login
+        // If User is not logged in , This will redirect user to LoginActivity.
+        if(userSessionManager.checkLogin()) finish();
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -67,12 +113,12 @@ public class MenuActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            //Eseguo il logout
+            userSessionManager.logoutUser();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
