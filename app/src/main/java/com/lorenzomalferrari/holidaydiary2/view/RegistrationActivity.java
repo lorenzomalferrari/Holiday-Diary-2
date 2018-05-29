@@ -1,7 +1,9 @@
-package com.lorenzomalferrari.holidaydiary2;
+package com.lorenzomalferrari.holidaydiary2.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.lorenzomalferrari.holidaydiary2.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 
